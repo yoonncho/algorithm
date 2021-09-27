@@ -89,14 +89,14 @@ int main() {
 	int i, n, m, a, b, c, cnt=0, res=0;
 	scanf("%d %d", &n, &m);
 	for (i = 1; i <= n; i++) {
-		unf[i]=i;
+		unf[i]=i; // 모든 집합을 자기 단독의 집합이라고 초기화
 	}
 	for (int i = 1; i <= m; i++) {
 		scanf("%d %d %d", &a, &b, &c);
 		Ed.push_back(Edge(a, b, c));
 	}
 	sort(Ed.begin(), Ed.end()); //(가중치 값 기준으로) 오름차순 정렬
-	for (i = 0; i < m; i++) {
+	for (i = 0; i < m; i++) { //벡터는 0부터니까
 		int fa = Find(Ed[i].v1);
 		int fb = Find(Ed[i].v2);
 		if (fa != fb) { //서로 다른 집합인 경우
