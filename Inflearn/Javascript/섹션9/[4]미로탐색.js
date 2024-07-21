@@ -38,4 +38,5 @@ let arr = [
   [1, 0, 0, 0, 0, 0, 0],
 ];
 
+// 8
 console.log(solution(arr));
