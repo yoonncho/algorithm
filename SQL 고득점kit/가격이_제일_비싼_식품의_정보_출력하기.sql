@@ -1,0 +1,13 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/131115
+
+-- 방법 1
+SELECT * 
+FROM FOOD_PRODUCT
+ORDER BY PRICE DESC
+LIMIT 1
+
+
+-- 방법 2
+SELECT * 
+FROM FOOD_PRODUCT
+WHERE PRICE = (SELECT MAX(PRICE) FROM FOOD_PRODUCT)
