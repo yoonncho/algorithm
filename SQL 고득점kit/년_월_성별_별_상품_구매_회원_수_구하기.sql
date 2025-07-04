@@ -1,0 +1,13 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/131532
+
+
+-- 💡 주의: "년, 월, 성별 별로 상품을 구매한 회원수"를 구해야함
+-- 이때, 같은 사용자가 한 달에 여러 번 구매를 해도 1번만 세야한다.
+-- 따라서 COUNT(DISTINCT O.USER_ID) 중복 제거 필요하다!
+SELECT YEAR(O.SALES_DATE) AS YEAR, MONTH(O.SALES_DATE) AS MONTH, U.GENDER, COUNT(DISTINCT O.USER_ID) AS USERS
+FROM ONLINE_SALE AS O
+LEFT JOIN USER_INFO AS U
+ON O.USER_ID = U.USER_ID
+GROUP BY YEAR(O.SALES_DATE), MONTH(O.SALES_DATE), U.GENDER
+HAVING U.GENDER IS NOT NULL
+ORDER BY YEAR(O.SALES_DATE), MONTH(O.SALES_DATE), U.GENDER
