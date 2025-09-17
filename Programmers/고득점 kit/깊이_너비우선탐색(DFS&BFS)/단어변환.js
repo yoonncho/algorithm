@@ -38,3 +38,22 @@ function solution(begin, target, words) {
 
   return visited[target] ? visited[target] : 0;
 }
+
+// 방법2
+function solution(begin, target, words) {
+  const visited = Array(words.length).fill(false);
+  let queue = [[begin, 0]]; // [단어, 변환 횟수]
+
+  while (queue.length) {
+    const [word, count] = queue.shift();
+    if (word === target) return count;
+
+    for (let i = 0; i < words.length; i++) {
+      if (!visited[i] && isConnected(word, words[i])) {
+        visited[i] = true;
+        queue.push([words[i], count + 1]);
+      }
+    }
+  }
+  return 0;
+}
