@@ -40,6 +40,7 @@ function solution(begin, target, words) {
 }
 
 // 방법2
+// [단어, 변환횟수]를 모두 저장
 function solution(begin, target, words) {
   const visited = Array(words.length).fill(false);
   let queue = [[begin, 0]]; // [단어, 변환 횟수]
@@ -50,7 +51,7 @@ function solution(begin, target, words) {
 
     for (let i = 0; i < words.length; i++) {
       if (!visited[i] && isConnected(word, words[i])) {
-        visited[i] = true;
+        visited[i] = true; // 방문처리
         queue.push([words[i], count + 1]);
       }
     }
