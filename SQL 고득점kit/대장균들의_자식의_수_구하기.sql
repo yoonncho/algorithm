@@ -1,0 +1,8 @@
+SELECT A.ID AS ID, COUNT(B.ID) AS CHILD_COUNT
+FROM ECOLI_DATA AS A
+LEFT JOIN ECOLI_DATA AS B
+-- 부모를 기준으로 자식을 세어야하니까, A가 부모 B가 자식이 되려면
+-- B.PARENT_ID 가 A.ID 와 같아야 “A가 부모, B가 자식” 이 된다.
+ON A.ID = B.PARENT_ID
+GROUP BY A.ID
+ORDER BY A.ID 
